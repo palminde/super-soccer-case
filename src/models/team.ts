@@ -31,12 +31,14 @@ export class Team {
       throw new Error('Invalid team size, must be 5 players');
     }
 
+    const numberOfConfiguredPlayers =
+      teamConfig.numberOfDefencePlayers + teamConfig.numberOfOffencePlayers;
     if (
-      teamConfig.numberOfDefencePlayers + teamConfig.numberOfOffencePlayers >=
-      TEAM_SIZE
+      numberOfConfiguredPlayers >= TEAM_SIZE ||
+      numberOfConfiguredPlayers === 0
     ) {
       throw new Error(
-        'Invalid team configuration, to many players assigned to eithter defence or offence - Max team size is 5 including goalie',
+        'Invalid team configuration, must have at least 1 player configurered for either defence or offence and max 4',
       );
     }
 

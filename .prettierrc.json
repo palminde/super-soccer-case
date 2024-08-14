@@ -1,12 +1,4 @@
 {
   "singleQuote": true,
-  "trailingComma": "all",
-  "overrides": [
-    {
-      "files": ["*.spec.ts", "*.spec.tsx"],
-      "options": {
-        "printWidth": 140
-      }
-    }
-  ]
+  "trailingComma": "all"
 }
