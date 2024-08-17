@@ -1,6 +1,7 @@
 import { Role } from './commonModel';
 import { Pokemon } from './pokemon';
 import { Team } from './team';
+import { describe, expect, it } from 'vitest';
 
 describe('Team', () => {
   describe('constructor', () => {

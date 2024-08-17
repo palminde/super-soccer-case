@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./models": {
+      "types": "./src/models/**/*.ts",
+      "default": "./dist/models/**/*.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "check-types": "tsc --noEmit",
+    "fix": "npm run lint:fix && npm run prettier:fix",
+    "lint": "eslint",
+    "lint:fix": "npm run lint -- --fix --quiet",
+    "prettier": "prettier 'src/**/*.{js,ts}'",
+    "prettier:check": "npm run prettier -- --check",
+    "prettier:fix": "npm run prettier -- --write --log-level=error",
+    "test": "vitest run --coverage --silent"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.11",
+    "@vitest/coverage-v8": "^2.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

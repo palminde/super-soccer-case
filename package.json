@@ -1,39 +1,31 @@
 {
   "name": "super-soccer-case",
+  "private": true,
+  "author": "Patrick Alminde",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/palminde/super-soccer-case.git"
   },
-  "author": "Patrick Alminde",
-  "license": "SEE LICENSE IN LICENSE",
-  "types": "lib/index.d.ts",
   "scripts": {
-    "prepare": "npm run build",
-    "prebuild": "npm run clean",
-    "build": "tsc",
-    "clean": "tsc --build --clean",
-    "fix": "npm run lint:fix && npm run prettier:fix",
-    "lint": "eslint src",
-    "lint:fix": "npm run lint -- --fix --quiet",
-    "prettier": "prettier 'src/**/*.{js,ts}'",
-    "prettier:check": "npm run prettier -- --check",
-    "prettier:fix": "npm run prettier -- --write --loglevel=error",
-    "test": "jest",
-    "test:watch": "npm run test -- --watch"
+    "lint:fix": "eslint --fix && prettier --write \"apps/**/*.{js,jsx,ts,tsx}\"",
+    "build": "yarn workspaces foreach -A run build",
+    "test": "yarn workspaces foreach -A run test"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/node-fetch": "^2.6.11",
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.6.0",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
     "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^28.8.0",
-    "jest": "^29.7.0",
-    "prettier": "^3.3.3",
-    "ts-jest": "^29.2.4",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
-  }
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-unused-imports": "^4.0.0",
+    "prettier": "^3.3.3"
+  },
+  "workspaces": [
+    "apps/*"
+  ],
+  "packageManager": "yarn@4.4.0"
 }
