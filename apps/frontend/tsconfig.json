@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "target":"ESNext",
+    "target": "ESNext",
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
@@ -12,4 +12,9 @@
     "composite": true
   },
   "include": ["src", "vite.config.ts", "setup-tests.ts"],
+  "references": [
+    {
+      "path": "../backend"
+    }
+  ]
 }

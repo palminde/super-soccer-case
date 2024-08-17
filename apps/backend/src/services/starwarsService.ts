@@ -1,6 +1,7 @@
 import { StarwarsCharacter } from '../models/starwars';
 import { randomSampleFromArray } from '../utils/randomSampleFromArray';
 import { ApiConfig } from './commonService';
+import { mapStarwarsResponseToStarwarsCharacter } from '../mappers/starwarsMapper';
 
 export type StarwarsPeopleResponse = {
   name: string;
@@ -27,7 +28,10 @@ export class StarwarsService {
     if (!this._characterCount) {
       await this.updateCharacterCount();
     }
-    const characterIds = [...Array(this._characterCount).keys()];
+    // mapping from 0 based to 1 based character ids
+    const characterIds = [...Array(this._characterCount).keys()].map(
+      (n) => n + 1,
+    );
     const randomCharacterIds = randomSampleFromArray(
       characterIds,
       numberOfCharacters,
@@ -37,13 +41,7 @@ export class StarwarsService {
       randomCharacterIds.map(this.getStarwarsCharacter),
     );
 
-    return characters.map((character) => {
-      return new StarwarsCharacter(
-        character.name,
-        Number(character.mass),
-        Number(character.height),
-      );
-    });
+    return characters.map(mapStarwarsResponseToStarwarsCharacter);
   }
 
   private async getStarwarsCharacter(id: number) {

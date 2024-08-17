@@ -79,6 +79,10 @@ export class Team {
     }
     const offencePlayers = playersToAssign;
 
+    defencePlayers.forEach((player) => (player.role = Role.Defence));
+    offencePlayers.forEach((player) => (player.role = Role.Offence));
+    goalie.role = Role.Goalie;
+
     return { defencePlayers, offencePlayers, goalie };
   }
 
@@ -98,5 +102,15 @@ export class Team {
 
   get offencePlayers() {
     return this._offencePlayers;
+  }
+
+  toJSON() {
+    return {
+      id: this._id,
+      goalie: this._goalie.toJSON(),
+      defencePlayers: this._defencePlayers.map((player) => player.toJSON()),
+      offencePlayers: this._offencePlayers.map((player) => player.toJSON()),
+      players: this.players.map((player) => player.toJSON()),
+    };
   }
 }

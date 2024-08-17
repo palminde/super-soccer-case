@@ -5,7 +5,15 @@
     "resolveJsonModule": true,
     "rootDir": "src",
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
+    "declaration": true
+  },
+  "ts-node": {
+    "esm": true,
+    "compiler": "typescript",
+    "experimentalSpecifierResolution": "node"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]

@@ -1,8 +1,8 @@
 import { Pokemon } from '../models/pokemon';
-import { PokemonResponse } from '../services/pokemonService';
+import { PokemonIdRequestResponse } from '../services/pokemonService';
 
 export const mapPokemonResponseToPokemon = (
-  response: PokemonResponse,
+  response: PokemonIdRequestResponse,
 ): Pokemon => {
   const weight = Number(response.weight);
   const height = Number(response.height);
