@@ -13,6 +13,7 @@ To run both the backend and frontend locally execute the following commands (ass
 
 ```
 brew install yarn
+nvm install
 yarn set version latest
 yarn
 yarn build
