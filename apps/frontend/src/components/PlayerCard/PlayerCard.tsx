@@ -12,16 +12,21 @@ type PlayerCardProps = {
 
 export function PlayerCard({ player, reverse }: PlayerCardProps): JSX.Element {
   return (
-    <Card sx={{ width: '100%', height: '100px', backgroundColor: 'grey.900' }}>
+    <Card
+      sx={{
+        width: '100%',
+        height: { xs: '200px', md: '100px' },
+        backgroundColor: 'grey.900',
+      }}
+    >
       <CardContent>
         <Stack
-          direction={reverse ? 'row-reverse' : 'row'}
+          direction={{ xs: 'column', md: reverse ? 'row-reverse' : 'row' }}
           spacing={2}
           alignItems={'center'}
           justifyContent={'space-between'}
           textOverflow={'ellipsis'}
-          overflow="hidden"
-          whiteSpace={'nowrap'}
+          overflow={{ xs: 'visible', md: 'hidden' }}
         >
           <Stack
             gap={1}
@@ -29,10 +34,18 @@ export function PlayerCard({ player, reverse }: PlayerCardProps): JSX.Element {
             overflow="hidden"
             whiteSpace={'nowrap'}
           >
-            <Typography variant="h5" textAlign={reverse ? 'end' : 'start'}>
+            <Typography
+              variant={'h5'}
+              whiteSpace={{ xs: 'normal', md: 'nowrap' }}
+              textAlign={{ xs: 'center', md: reverse ? 'end' : 'start' }}
+            >
               {player.name}
             </Typography>
-            <Stack direction={reverse ? 'row-reverse' : 'row'} gap={1}>
+            <Stack
+              direction={reverse ? 'row-reverse' : 'row'}
+              gap={1}
+              justifyContent={{ xs: 'center', md: 'flex-start' }}
+            >
               {Object.entries(player).map(
                 ([key, value]: [string, UnitOfMeasure | string]) => {
                   if (!isUnitsOfMeasure(value)) {

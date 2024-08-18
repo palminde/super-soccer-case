@@ -39,7 +39,13 @@ export function TeamCard({
     >
       <CardContent>
         <Stack direction={'column'} spacing={2} alignItems={'space-between'}>
-          <Typography variant="h5" textAlign={'center'}>
+          <Typography
+            variant="h5"
+            textAlign={'center'}
+            textOverflow={'ellipsis'}
+            overflow="hidden"
+            whiteSpace={'nowrap'}
+          >
             {title}
           </Typography>
           {error ? (
@@ -50,7 +56,11 @@ export function TeamCard({
             </p>
           ) : loading ? (
             [...Array(5).keys()].map((_, index) => (
-              <Skeleton key={index} variant="rectangular" height={'100px'} />
+              <Skeleton
+                key={index}
+                variant="rectangular"
+                sx={{ height: { xs: '200px', md: '100px' } }}
+              />
             ))
           ) : (
             team?.players.map((player) => (

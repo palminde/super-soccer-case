@@ -1,7 +1,8 @@
 import { Button, Container, Stack, Typography } from '@mui/material';
-import { Team, localServerConfig } from 'backend';
+import { Team } from 'backend';
 import { TeamCard } from 'src/components/TeamCard/TeamCard';
-import { useGetData } from 'src/hooks/useGetData';
+import { useGetData } from 'src/hooks/useGetData/useGetData';
+import { teamEndPoints } from 'src/hooks/useGetData/useGetData.config';
 
 export function LandingPage(): JSX.Element {
   const {
@@ -10,7 +11,7 @@ export function LandingPage(): JSX.Element {
     error: starwarsError,
     getData: getStarwarsData,
   } = useGetData<Team>({
-    endpoint: `http://${localServerConfig.host}:${localServerConfig.port}${localServerConfig.path}/team/starwars`,
+    endpoint: teamEndPoints.starwars,
     lazy: true,
   });
   const {
@@ -19,7 +20,7 @@ export function LandingPage(): JSX.Element {
     error: pokemonError,
     getData: getPokemonData,
   } = useGetData<Team>({
-    endpoint: `http://${localServerConfig.host}:${localServerConfig.port}${localServerConfig.path}/team/pokemon`,
+    endpoint: teamEndPoints.pokemon,
     lazy: true,
   });
 
@@ -40,7 +41,7 @@ export function LandingPage(): JSX.Element {
       <Stack
         direction={'row'}
         spacing={2}
-        width={'80%'}
+        width={'100%'}
         justifyContent={'space-between'}
       >
         <TeamCard
