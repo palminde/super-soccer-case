@@ -6,8 +6,6 @@
     "rootDir": "src",
     "outDir": "dist",
     "noEmit": false,
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true,
     "declaration": true
   },
   "ts-node": {
