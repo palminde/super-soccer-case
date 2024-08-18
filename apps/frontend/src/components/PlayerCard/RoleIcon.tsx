@@ -1,6 +1,6 @@
 import { BackHand, Shield, SportsSoccer } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
-import { Role } from 'backend/src/models';
+import { Role } from 'backend/dist/models/commonModel';
 import { useMemo } from 'react';
 
 type RoleIconProps = {

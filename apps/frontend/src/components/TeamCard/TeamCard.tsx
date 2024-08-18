@@ -1,4 +1,4 @@
-import { Team } from 'backend/src/models/team';
+import { Team } from 'backend/dist/models/team';
 import {
   Button,
   Card,

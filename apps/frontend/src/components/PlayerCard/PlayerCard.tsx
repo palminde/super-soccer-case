@@ -3,7 +3,7 @@ import {
   Player,
   UnitOfMeasure,
   isUnitsOfMeasure,
-} from 'backend/src/models/commonModel';
+} from 'backend/dist/models/commonModel';
 import { RoleIcon } from './RoleIcon';
 type PlayerCardProps = {
   player: Player;
