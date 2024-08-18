@@ -23,10 +23,12 @@ export const sortPlayers = (
   sortOrder: SortOrder,
 ): Player[] => {
   return players.sort((a, b) => {
+    const aValue = a[sortOn].value ?? 0;
+    const bValue = b[sortOn].value ?? 0;
     if (sortOrder === 'asc') {
-      return a[sortOn].value - b[sortOn].value;
+      return aValue - bValue;
     } else {
-      return b[sortOn].value - a[sortOn].value;
+      return bValue - aValue;
     }
   });
 };

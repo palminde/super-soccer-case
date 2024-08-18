@@ -25,9 +25,7 @@ describe('useGetData', () => {
   });
   describe('when lazy is false', () => {
     it('should call getData on mount', () => {
-      const { result } = renderHook(() =>
-        useGetData({ endpoint: 'test', lazy: false }),
-      );
+      renderHook(() => useGetData({ endpoint: 'test', lazy: false }));
       expect(fetch).toHaveBeenCalled();
     });
   });
