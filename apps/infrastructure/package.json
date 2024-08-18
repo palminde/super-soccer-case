@@ -1,0 +1,19 @@
+{
+  "name": "infrastructure",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "deploy": "sls deploy"
+  },
+  "devDependencies": {
+    "serverless": "^4.1.22"
+  },
+  "references": [
+    {
+      "path": "../backend"
+    },
+    {
+      "path": "../frontend"
+    }
+  ]
+}

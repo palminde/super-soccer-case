@@ -1,0 +1,60 @@
+service: my-serverless-app
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: eu-west-1
+
+functions:
+  getPokemonTeam:
+    handler: ../backend/api/v1/handler.getPokemonTeam
+    events:
+      - http:
+          path: api/v1/team/pokemon
+          method: get
+
+  getStarwarsTeam:
+    handler: ../backend/api/v1/handler.getStarwarsTeam
+    events:
+      - http:
+          path: api/v1/team/starwars
+          method: get
+
+resources:
+  Resources:
+    FrontendBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: frontend-bucket
+
+    MyCloudFrontDistribution:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Origins:
+            - DomainName: !GetAtt FrontendBucket.DomainName
+              Id: S3Origin
+              S3OriginConfig: {}
+          Enabled: true
+          DefaultCacheBehavior:
+            TargetOriginId: S3Origin
+            ViewerProtocolPolicy: redirect-to-https
+            AllowedMethods:
+              - GET
+              - HEAD
+            CachedMethods:
+              - GET
+              - HEAD
+            ForwardedValues:
+              QueryString: false
+              Cookies:
+                Forward: none
+          DefaultRootObject: index.html
+
+plugins:
+  - serverless-s3-sync
+
+custom:
+  s3Sync:
+    - bucketName: frontend-bucket
+      localDir: ../frontend/dist
