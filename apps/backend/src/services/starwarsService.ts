@@ -1,7 +1,6 @@
 import { StarwarsCharacter } from '../models/starwars';
 import { randomSampleFromArray } from '../utils/randomSampleFromArray';
 import { ApiConfig } from './commonService';
-import { mapStarwarsResponseToStarwarsCharacter } from '../mappers/starwarsMapper';
 
 export type StarwarsPeopleResponse = {
   name: string;
@@ -41,7 +40,7 @@ export class StarwarsService {
       randomCharacterIds.map(this.getStarwarsCharacter),
     );
 
-    return characters.map(mapStarwarsResponseToStarwarsCharacter);
+    return characters.map(StarwarsCharacter.fromStarwarsApiResponse);
   }
 
   private async getStarwarsCharacter(id: number) {

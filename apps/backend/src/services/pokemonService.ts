@@ -1,4 +1,3 @@
-import { mapPokemonResponseToPokemon } from '../mappers/pokemonMapper';
 import { Pokemon } from '../models/pokemon';
 import { randomSampleFromArray } from '../utils/randomSampleFromArray';
 import { ApiConfig } from './commonService';
@@ -40,7 +39,7 @@ export class PokemonService {
       randomPokemonOffsets.map(this.getPokemon),
     );
 
-    return pokemons.map(mapPokemonResponseToPokemon);
+    return pokemons.map(Pokemon.fromPokemonApiResponse);
   }
 
   private async getPokemon(offset: number) {
